@@ -6,7 +6,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "npm run build && electron .",
-		"build": "rm -r build/* && tsc && copyfiles --up 1 src/*.html src/**/*.html build"
+		"build": "rm -r build/* && tsc && npm run copy && npm run buildSass",
+		"copy": "copyfiles --up 1 src/*.html src/**/*.html build",
+		"buildSass": "sass src/sass:build/sass"
 	},
 	"repository": {
 		"type": "git",
@@ -21,6 +23,7 @@
 	"devDependencies": {
 		"copyfiles": "^2.4.1",
 		"electron": "^13.1.7",
+		"sass": "^1.35.2",
 		"typescript": "^4.3.5"
 	}
 }
