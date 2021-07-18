@@ -5,10 +5,11 @@
 	"main": "build/main.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "npm run build && electron .",
-		"build": "rm -r build/* && tsc && npm run copy && npm run buildSass",
+		"start": "electron .",
 		"copy": "copyfiles --up 1 src/*.html src/**/*.html build",
-		"buildSass": "sass src/sass:build/sass"
+		"buildSass": "sass src/sass:build/sass",
+		"build": "rm -r build/* && tsc && npm run copy && npm run buildSass",
+		"buildStart": "npm run build && npm start"
 	},
 	"repository": {
 		"type": "git",
