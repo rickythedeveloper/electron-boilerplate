@@ -6,7 +6,13 @@
 	"configurations": [
 		{
 			"command": "npm start",
-			"name": "Run npm start",
+			"name": "Run",
+			"request": "launch",
+			"type": "node-terminal"
+		},
+		{
+			"command": "npm run buildStart",
+			"name": "Build and Run",
 			"request": "launch",
 			"type": "node-terminal"
 		}
