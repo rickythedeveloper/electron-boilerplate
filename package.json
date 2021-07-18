@@ -2,11 +2,11 @@
 	"name": "electron-ts-test",
 	"version": "1.0.0",
 	"description": "",
-	"main": "build/main.js",
+	"main": "build/index/main.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "electron .",
-		"copy": "copyfiles --up 1 src/*.html src/**/*.html build",
+		"copy": "copyfiles --up 1 src/**/*.html build",
 		"buildSass": "sass src/sass:build/sass",
 		"build": "rm -r build/* && tsc && npm run copy && npm run buildSass",
 		"buildStart": "npm run build && npm start"

@@ -1,5 +1,7 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
+
+import { MessageType, MessageTypeString } from "./constants";
 
 function createWindow() {
 	// Create the browser window.
@@ -8,11 +10,13 @@ function createWindow() {
 		height: 600,
 		webPreferences: {
 			preload: path.join(__dirname, "preload.js"),
+			nodeIntegration: true,
+			contextIsolation: false,
 		},
 	});
 
 	// and load the index.html of the app.
-	mainWindow.loadFile(path.join(__dirname, "/html/index.html"));
+	mainWindow.loadFile(path.join(__dirname, "layout.html"));
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()
@@ -38,5 +42,12 @@ app.on("window-all-closed", function () {
 	if (process.platform !== "darwin") app.quit();
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+ipcMain.on(MessageType.someAsyncMessage, (event, arg) => {
+	console.log(arg); // prints "ping"
+	event.reply(MessageType.someAsyncReply, "Async reply by main");
+});
+
+ipcMain.on(MessageType.someSyncMessage, (event, arg) => {
+	console.log(arg); // prints "ping"
+	event.returnValue = "Return sync message by main";
+});
