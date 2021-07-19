@@ -1,7 +1,9 @@
-export enum MessageType {
-	someAsyncMessage = "someAsyncMessage",
-	someAsyncReply = "someAsyncReply",
-	someSyncMessage = "someSyncMessage",
+enum MessageType {
+  someAsyncMessage = 'someAsyncMessage',
+  someAsyncReply = 'someAsyncReply',
+  someSyncMessage = 'someSyncMessage',
 }
 
-export type MessageTypeString = keyof typeof MessageType;
+type MessageTypeString = keyof typeof MessageType;
+
+export { MessageType, MessageTypeString };
