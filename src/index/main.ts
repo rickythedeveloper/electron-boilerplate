@@ -43,11 +43,11 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on(MessageType.someAsyncMessage, (event, arg) => {
-  console.log(arg); // prints "ping"
+  console.log(arg); // eslint-disable-line no-console
   event.reply(MessageType.someAsyncReply, 'Async reply by main');
 });
 
 ipcMain.on(MessageType.someSyncMessage, (event, arg) => {
-  console.log(arg); // prints "ping"
+  console.log(arg); // eslint-disable-line no-console
   event.returnValue = 'Return sync message by main'; // eslint-disable-line no-param-reassign
 });
